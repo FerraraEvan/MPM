@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MPM</string>
+    <string name="step_name">Nom de l\'etape</string>
+    <string name="name_project">Nom du projet</string>
+    <string name="name_description">Description</string>
+    <string name="add_step_button">+</string>
+    <string name="points_text">Points : </string>
+    <string name="title_activity_project">ProjectActivity</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="student_list">Liste des étudiants : </string>
+    <string name="step">Etapes : </string>
+    <string name="enter_student_name">Entrez le nom des étudiants</string>
+    <string name="send_student_button">Envoyer</string>
+    <string name="enter_student">...</string>
+</resources>

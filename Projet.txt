@@ -1,0 +1,18 @@
+Suivre les projets d'étudiant. Un étudiant peut avoir plusieurs porjets, 
+chaque projets a une description avec les étapes du projets. On peut mettre des points. 
+Intégré dans une DB. On peut voir les points totaux. On ajoute une liste d'étudiant, ça les ajoute direct. 
+Les noms des étudiant viennent d'un fichier texte (ajouter des user, quand on appuie sur le bouton "créer"
+il ajoute les étudiants directement, on ne doit pas les ajouter manuellement).
+
+MPM (mobile project management)
+Pour les étudiants, on copie colle du texte dans un text area et ça crée tous les students. 
+Premiere page : "Liste des étudiants". Y a "Evan" on appuie dessus, on a les projets d'Evan. Nom du projet avec photo
+Quand on clique sur le projet, on a le nom + la description, les étapes (langue de programmation,...). Si étape
+réalise on indique un "V" a côté de l'étape fait avec les points. En bas a droite point totaux. 
+Sur la fenêtre 2 en bas a droite, bouton "+" pour créer un projet. Pareil pour la fenêtre 3 avec les étapes. 
+Il ne demande pas de supprimer des étapes, student,... Les points des étapes sont sur 10 mais a la fin le total est
+sur 20. 
+
+Le prof conseille de d'abord faire la 3 ème fenêtre, puis la 2ème, puis la première. 
+3 listes. Il conseille de faire une classe Project, avec un student,description, list d'étapes. 
+Classe étapes avec nom et points.  
