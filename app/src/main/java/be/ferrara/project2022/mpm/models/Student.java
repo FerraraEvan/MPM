@@ -9,9 +9,13 @@ public class Student implements Serializable {
     private String mName;
     private List<Project> mProjectList = new ArrayList<>();
     private java.util.UUID mId;
+    private java.util.UUID mStudentId;
     public Student(String name) {
         this.mName = name;
         this.mId= UUID.randomUUID();
+    }
+    public Student(UUID id){
+        mId = id;
     }
 
     public String getName() {

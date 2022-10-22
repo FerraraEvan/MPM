@@ -36,6 +36,7 @@ public class StepActivity extends AppCompatActivity implements StepFragment.List
         setContentView(R.layout.activity_step);
         initializeComponent();
         mProject = (Project) getIntent().getSerializableExtra(PROJECT_NAME);
+
         setTextView();
         updateUI();
         clickAddStepButton();
@@ -123,14 +124,8 @@ public class StepActivity extends AppCompatActivity implements StepFragment.List
     }
 
     @Override
-    public void returnPoint(int point) {
-        if(mStep != null)
-        mProject.setTotal(point);
-    }
-
-    @Override
-    public void returnName(String name) {
+    public void returnStep(Step step) {
         if(mStep !=null)
-        mStep.setName(name);
+            mProject.updateStep(step);
     }
 }

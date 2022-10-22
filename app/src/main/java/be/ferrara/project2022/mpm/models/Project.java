@@ -10,6 +10,7 @@ public class Project implements Serializable {
     private  String mDescription;
     private final List<Step> mStepList=new ArrayList<>();
     private java.util.UUID mId;
+    private java.util.UUID mStudentId;
     private int mTotal=0;
 
     public Project(){
@@ -17,9 +18,14 @@ public class Project implements Serializable {
         mDescription = "Description";
         mId= UUID.randomUUID();
     }
+    public Project(UUID id){ mId = id;}
 
     public UUID getId() {
         return mId;
+    }
+
+    public void setStudentId(UUID mStudentId) {
+        this.mStudentId = mStudentId;
     }
 
     public int getTotalPoint() {
@@ -27,6 +33,16 @@ public class Project implements Serializable {
             return ((mTotal / mStepList.size() * 2));
         else
             return 0;
+    }
+    public void updateStep(Step step){
+        Step stepToDelete = new Step();
+        for (Step step1:mStepList) {
+            if(step.getId().equals(step1.getId())){
+                stepToDelete = step1;
+            }
+        }
+        mStepList.remove(stepToDelete);
+        mStepList.add(step);
     }
 
     public void setTotal(int mTotal) {
