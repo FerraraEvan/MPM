@@ -18,10 +18,6 @@ public Step() {
         this.mName = mName;
     }
 
-    public void setPoints(int mPoints) {
-        this.mPoints = mPoints;
-    }
-
     public int getPoints() {
         return mPoints;
     }

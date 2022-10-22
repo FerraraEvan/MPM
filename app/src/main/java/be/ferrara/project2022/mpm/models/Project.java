@@ -1,25 +1,21 @@
 package be.ferrara.project2022.mpm.models;
 
-import android.util.Log;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
 public class Project implements Serializable {
     private String mName;
     private  String mDescription;
-    private List<Step> mStepList=new ArrayList<>();
-    private int mTotalPoint;
+    private final List<Step> mStepList=new ArrayList<>();
     private java.util.UUID mId;
+    private int mTotal=0;
 
     public Project(){
         mName = "Project";
         mDescription = "Description";
         mId= UUID.randomUUID();
-        mTotalPoint = 0;
     }
 
     public UUID getId() {
@@ -27,10 +23,14 @@ public class Project implements Serializable {
     }
 
     public int getTotalPoint() {
-        for (Step step : mStepList) {
-            mTotalPoint+=step.getPoints();
-        }
-            return mTotalPoint;
+        if (mStepList.size() != 0)
+            return ((mTotal / mStepList.size() * 2));
+        else
+            return 0;
+    }
+
+    public void setTotal(int mTotal) {
+        this.mTotal +=mTotal;
     }
 
     public String getName() {

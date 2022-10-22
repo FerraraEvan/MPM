@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -29,7 +28,7 @@ public class StepActivity extends AppCompatActivity implements StepFragment.List
     private StepFragment fragment;
     private TextView mTotalPointTextView;
     private Project mProject;
-    private int mIdContainer = R.id.horizontal_layout;
+    private final int mIdContainer = R.id.horizontal_layout;
     private Step mStep;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +38,16 @@ public class StepActivity extends AppCompatActivity implements StepFragment.List
         mProject = (Project) getIntent().getSerializableExtra(PROJECT_NAME);
         setTextView();
         updateUI();
+        clickAddStepButton();
+        setEditText();
+    }
+
+    private void clickAddStepButton() {
         mAddStepButton.setOnClickListener(view -> {
             mStep = new Step();
             mProject.addStep(mStep);
             addFragment(mStep);
         });
-        setEditText();
     }
 
     private void updateUI() {
@@ -104,7 +107,6 @@ public class StepActivity extends AppCompatActivity implements StepFragment.List
     }
 
     private void addFragment(Step step) {
-        Toast.makeText(this, step.getName()+step.getPoints(), Toast.LENGTH_SHORT).show();
             FragmentManager fm = getSupportFragmentManager();
             fragment = new StepFragment();
             fragment.setListener(this);
@@ -123,7 +125,7 @@ public class StepActivity extends AppCompatActivity implements StepFragment.List
     @Override
     public void returnPoint(int point) {
         if(mStep != null)
-        mStep.setPoints(point);
+        mProject.setTotal(point);
     }
 
     @Override

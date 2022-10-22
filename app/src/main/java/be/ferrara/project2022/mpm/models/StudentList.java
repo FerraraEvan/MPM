@@ -16,13 +16,15 @@ public class StudentList implements Serializable {
     }
 
     public void updateStudent(Student student) {
-        Student studentToDelete = new Student("");
+        Student studentToDelete = null;
         for (Student student1:studentList) {
             if(student.getId().equals(student1.getId())){
                 studentToDelete = student1;
             }
         }
+        if(studentToDelete!= null){
         studentList.remove(studentToDelete);
         studentList.add(student);
+        }
     }
 }

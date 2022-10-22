@@ -38,9 +38,8 @@ public class StudentActivity extends AppCompatActivity implements StudentFragmen
     private EditText mAddUserEditText;
     private StudentFragment studentFragment;
     private Intent intent;
-    //private Student mStudent;
-   // private List<Student> studentList = new ArrayList<>();
-    private StudentList studentList = new StudentList();
+    private Student mStudent;
+    private final StudentList studentList = new StudentList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +67,7 @@ public class StudentActivity extends AppCompatActivity implements StudentFragmen
         mAddStudentButton.setOnClickListener(view -> {
             final AlertDialog.Builder alert = new AlertDialog.Builder(StudentActivity.this);
             View mView = getLayoutInflater().inflate(R.layout.dialog_student, null);
-            mAddUserEditText = (EditText) mView.findViewById(R.id.user_edit_text);
+            mAddUserEditText = mView.findViewById(R.id.user_edit_text);
             alert.setView(mView);
             AlertDialog alertDialog = alert.create();
             alertDialog.show();
@@ -80,17 +79,14 @@ public class StudentActivity extends AppCompatActivity implements StudentFragmen
 
     private void sendStudent(View mView, AlertDialog alertDialog) {
         mSendStudentButton = mView.findViewById(R.id.send_student_button);
-        mSendStudentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                alertDialog.dismiss();
-                String array[] = mUserList.trim().split("\n");
-                for (int i = 0; i < array.length; i++) {
-                    if(!array[i].trim().equals("")){
-                        Student student = new Student(array[i]);
-                        studentList.addStudent(student);
-                        addFragment(student);
-                    }
+        mSendStudentButton.setOnClickListener(view -> {
+            alertDialog.dismiss();
+            String[] array = mUserList.trim().split("\n");
+            for (String s : array) {
+                if (!s.trim().equals("")) {
+                    Student student = new Student(s);
+                    studentList.addStudent(student);
+                    addFragment(student);
                 }
             }
         });
@@ -126,16 +122,15 @@ public class StudentActivity extends AppCompatActivity implements StudentFragmen
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-         = (Student) data.getSerializableExtra(PROJECT_NAME);
-        //Log.d("student","activity result"+mStudent.getProjectList().size());
+        mStudent = (Student) data.getSerializableExtra(PROJECT_NAME);
+        studentList.updateStudent(mStudent);
         updateUI();
     }
 
     @Override
     public void sendStudentToProjectActivity(Student student) {
-        studentList.updateStudent(student);
         intent = new Intent(StudentActivity.this, ProjectActivity.class);
-        intent.putExtra("PROJECT_NAME",studentList);
+        intent.putExtra("PROJECT_NAME",student);
         startActivityForResult(intent,REQUEST_CODE);
     }
 }

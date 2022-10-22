@@ -28,7 +28,6 @@ public class ProjectActivity extends AppCompatActivity implements ProjectFragmen
     private FloatingActionButton mAddButton;
     private LinearLayout mContainer;
     private Intent intent;
-    private StudentList studentList;
     private ProjectFragment projectFragment;
 
     @Override
@@ -36,8 +35,7 @@ public class ProjectActivity extends AppCompatActivity implements ProjectFragmen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project);
         initializeComponent();
-        studentList = (StudentList) getIntent().getSerializableExtra(PROJECT_NAME);
-        mStudent = studentList.getStudentList().get(studentList.getStudentList().size()-1);
+        mStudent = (Student) getIntent().getSerializableExtra(PROJECT_NAME);
         updateUI();
         setText();
         onClickButton();
@@ -74,7 +72,6 @@ public class ProjectActivity extends AppCompatActivity implements ProjectFragmen
     void updateUI(){
         mContainer.removeAllViews();
         for (Project project : mStudent.getProjectList()) {
-            Log.d("student",mStudent.getProjectList().size()+"");
             addFragment(project);
         }
     }
