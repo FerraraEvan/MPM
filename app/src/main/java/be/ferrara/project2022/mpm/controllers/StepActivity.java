@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -62,6 +63,7 @@ public class StepActivity extends AppCompatActivity implements StepFragment.List
         mProjectNameEditText.setText(mProject.getName());
         mDescriptionEditText.setText(mProject.getDescription());
         mTotalPointTextView.setText(mProject.getTotalPoint()+"/20");
+        Log.d("student",mProject.getTotalPoint()+"");
     }
 
     private void setEditText() {
@@ -125,7 +127,9 @@ public class StepActivity extends AppCompatActivity implements StepFragment.List
 
     @Override
     public void returnStep(Step step) {
-        if(mStep !=null)
+        if(mStep !=null){
             mProject.updateStep(step);
+            mProject.setTotal(mStep.getPoints());
+        }
     }
 }

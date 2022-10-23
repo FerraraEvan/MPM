@@ -39,10 +39,11 @@ public class StudentActivity extends AppCompatActivity implements StudentFragmen
     private StudentFragment studentFragment;
     private Intent intent;
     private Student mStudent;
-    private final StudentList studentList = new StudentList();
+    private StudentList studentList = new StudentList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //studentList = new StudentList(this.getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
         initializeComponent();

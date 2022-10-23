@@ -1,5 +1,7 @@
 package be.ferrara.project2022.mpm.models;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,4 +72,8 @@ public class Project implements Serializable {
     }
 
     public void addStep(Step step){mStepList.add(step);}
+
+    public UUID getStudentId() {
+        return mStudentId;
+    }
 }

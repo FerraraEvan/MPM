@@ -23,7 +23,6 @@ public class MPMBaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE "+ProjectTable.NAME+"("
                 + ProjectTable.cols.NAME + ","
                 + ProjectTable.cols.UUID + ","
-                + ProjectTable.cols.UUID + ","
                 + ProjectTable.cols.STUDENTUUID + ","
                 + "FOREIGN KEY ("+ProjectTable.cols.STUDENTUUID+") REFERENCES "+ StudentTable.cols.UUID
         );
